@@ -26,9 +26,9 @@ You can use our training configurations provided in `configs/`:
 python train.py -c configs/datasets/cifar10_resnet32.yml --model resnet32 /path/to/cifar10
 ```
 
-### Models and config files
-- Model is in the "src/resnet.py" file
-- Hyper-parameters are in the "config/datasets/cifar10_resnet.yml" file and "train.py".
+### Models, config files and detailed training hyper-parameters
+- Model is in the "src/resnet.py" file.
+- Hyper-parameters are in the "config/datasets/cifar10_resnet32.yml" file and "train.py".
 
 |  Hyper-parameter   | Value  |
 |  ----  | ----  |
