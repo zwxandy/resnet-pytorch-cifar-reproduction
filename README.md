@@ -27,11 +27,6 @@ with it to `examples/`. The new training script here is just the `timm` training
 the checkpoints associated with it in the next section, and the hyperparameters are all provided in
 `configs/pretrained` for models trained from scratch, and `configs/finetuned` for fine-tuned models.
 
-# Results
-Type can be read in the format `L/PxC` where `L` is the number of transformer
-layers, `P` is the patch/convolution size, and `C` (CCT only) is the number of
-convolutional layers.
-
 # Citation
 ```bibtex
 @article{hassani2021escaping,
