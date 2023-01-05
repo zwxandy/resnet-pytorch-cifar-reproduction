@@ -42,6 +42,7 @@ python train.py -c configs/datasets/cifar10_resnet32.yml --model resnet32 /path/
 | initial learning rate | 0.1 |
 | mean | [0.485, 0.456, 0.406] |
 | std  | [0.229, 0.224, 0.225] |
+| # epochs | 200 |
 | with dropout? | No |
 | data augmentation| RandomHorizontalFlip, RandomCrop, RandomErasing |
 
