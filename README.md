@@ -1,10 +1,10 @@
-# Reproduce ResNet on CIFAR-10 in PyTorch (Top-1 Accuracy = 92.45%~92.61%)
+# Reproduce ResNet on CIFAR-10 in PyTorch
 
 As we know, the official ResNet code (including timm lib) only provides models for ImageNet dataset with 4 stages. 
 However, in the original ResNet paper (experiments part), **only 3 stages are needed for CIFAR-10 dataset (e.g., # blocks=[5, 5, 5] in ResNet-32)**. 
 For example, if we directly run 4-stage ResNet-32 on CIFAR-10, we unfortunately get ~88% top-1 accuracy (but 92.49% in the original ResNet paper).
 
-So, this project reproduces ResNet models (20/32/44/56/110/1202-layer) on CIFAR-10 with timm lib.
+So, this project reproduces ResNet models (20/32/44/56/110/1202-layer) on CIFAR-10 with timm lib. Finally, we can get 92.45%~92.61% top-1 accuracy for ResNet-32 which matches the result 92.49%.
 
 # How to run
 
