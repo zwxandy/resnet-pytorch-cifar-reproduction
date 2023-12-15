@@ -28,7 +28,7 @@ amp: True
 batch_size: 128
 lr: 0.1
 min_lr: 1e-5
-sched: multistep
+sched: cosine
 weight_decay: 1e-4
 epochs: 200
 cooldown_epochs: 10
