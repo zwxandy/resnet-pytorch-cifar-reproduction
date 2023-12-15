@@ -560,6 +560,7 @@ def main():
     )
     """
     
+    """
     # zwx: add this data processing
     dataset_train = datasets.ImageFolder(root=os.path.join(args.data_dir, 'train'), \
         transform=transforms.Compose([
@@ -581,7 +582,64 @@ def main():
         
     loader_eval = DataLoader(dataset=dataset_eval, batch_size=args.batch_size, \
         pin_memory=True, num_workers=args.workers, shuffle=False)
+    """
+
+    # Use torchvision.datasets.CIFAR10/CIFAR100 to load the data
+    if args.dataset == 'cifar10':
+        dataset_train = datasets.CIFAR10(
+            root=args.data_dir,
+            train=True,
+            download = True,
+            transform=transforms.Compose([
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.RandomCrop(size=32, padding=4),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=data_config['mean'], std=data_config['std']),
+                transforms.RandomErasing(scale=(0.04, 0.2), ratio=(0.5, 2)),
+            ])
+        )
     
+        dataset_eval = datasets.CIFAR10(
+            root=args.data_dir,
+            train=False,
+            download = True,
+            transform=transforms.Compose([
+                transforms.ToTensor(),
+                transforms.Normalize(mean=data_config['mean'], std=data_config['std']),
+            ]))
+        
+        loader_train = DataLoader(dataset=dataset_train, batch_size=args.batch_size, \
+            pin_memory=True, num_workers=args.workers, shuffle=True)      
+        loader_eval = DataLoader(dataset=dataset_eval, batch_size=args.batch_size, \
+            pin_memory=True, num_workers=args.workers, shuffle=False)
+
+    if args.dataset == 'cifar100':
+        dataset_train = datasets.CIFAR100(
+            root=args.data_dir,
+            train=True,
+            download = True,
+            transform=transforms.Compose([
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.RandomCrop(size=32, padding=4),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=data_config['mean'], std=data_config['std']),
+                transforms.RandomErasing(scale=(0.04, 0.2), ratio=(0.5, 2)),
+            ])
+        )
+    
+        dataset_eval = datasets.CIFAR100(
+            root=args.data_dir,
+            train=False,
+            download = True,
+            transform=transforms.Compose([
+                transforms.ToTensor(),
+                transforms.Normalize(mean=data_config['mean'], std=data_config['std']),
+            ]))
+        
+        loader_train = DataLoader(dataset=dataset_train, batch_size=args.batch_size, \
+            pin_memory=True, num_workers=args.workers, shuffle=True)      
+        loader_eval = DataLoader(dataset=dataset_eval, batch_size=args.batch_size, \
+            pin_memory=True, num_workers=args.workers, shuffle=False)
     
 
     # setup loss function
